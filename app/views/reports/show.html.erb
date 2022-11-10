@@ -1,0 +1,40 @@
+<!--  app/views/reports/show.html.erb -->
+<h2>Specific Details of Issue </h2>
+
+<ul id="details">
+  <h2 style="font-size: 22px;">Location: </h2>
+
+  <li style="margin-left: 14px;">    
+    Building:
+    <%= @report.building %>
+  </li>
+  <li style="margin-left: 14px;">
+    Area:
+    <%= @report.area %> 
+  </li>
+  <br>
+  <h2 style="font-size: 22px;">Problem Information: </h2>
+  <li style="margin-left: 14px;">
+    Problem Type:
+    <%= @report.problemtype %> 
+  </li>
+  <li style="margin-left: 14px;">
+    Emergency Level:
+    <%= @report.emergencylevel %> 
+  </li>
+  <li style="margin-left: 14px;">
+    Complete Status:
+    <%= @report.status %> 
+  </li>
+</ul>
+
+
+<div class="row">
+  <%= link_to 'Management', edit_report_path(@report), :class => 'btn btn-success col-2' %>
+  <% if @report.status == "Uncompleted"%>
+    <%= link_to 'Mark as complete', complete_report_path(@report), 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger col-2' %>
+  <% else %>
+    <div class="btn btn-primary col-2"> Already compeleted </div>
+  <% end %>
+  <%= link_to 'Back to report list', reports_path, :class => 'btn btn-success col-2' %>
+</div>
