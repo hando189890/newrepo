@@ -16,9 +16,20 @@ ColumbiaRepairReportPlatform::Application.configure do
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
+  config.active_record.raise_in_transactional_callbacks = true
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.qq.com',
+    port:                 587,
+    domain:               'qq.com',
+    user_name:            '1023990429@qq.com',
+    password:             'ykwahbtwadkebdbe',
+    authentication:       'plain',
+    enable_starttls_auto: false  }
 
   # Only use best-standards-support built into browsers
   #config.action_dispatch.best_standards_support = :builtin

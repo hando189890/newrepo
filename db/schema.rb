@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20221112044429) do
+ActiveRecord::Schema.define(version: 20221124151904) do
 
   create_table "reports", force: :cascade do |t|
     t.string "building"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20221112044429) do
     t.string "status"
     t.text   "description"
     t.string "file"
+    t.string "uni"
   end
 
 end
