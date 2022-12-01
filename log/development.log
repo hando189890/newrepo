@@ -1,489 +1,297 @@
-  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
-  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
-  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateReports (20111119180638)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "reports" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "building" varchar, "area" varchar, "problemtype" varchar, "emergencylevel" varchar, "status" varchar) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20111119180638"]]
+  [1m[35m (0.3ms)[0m  commit transaction
+Migrating to CreateManagers (20221111205912)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "managers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "password_digest" varchar, "name" varchar, "role" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221111205912"]]
+  [1m[35m (0.2ms)[0m  commit transaction
+Migrating to AddDescriptionToReports (20221112044429)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "reports" ADD "description" text
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "reports" ADD "file" varchar[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20221112044429"]]
+  [1m[36m (0.2ms)[0m  [1mcommit transaction[0m
+Migrating to CreateComments (20221113023752)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "comment" text, "report_id" integer, "manager_id" integer) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20221113023752"]]
+  [1m[36m (0.2ms)[0m  [1mcommit transaction[0m
+Migrating to AddUniToReports (20221124151904)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "reports" ADD "uni" varchar[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20221124151904"]]
+  [1m[36m (0.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
 DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
 
 You can opt into the new behavior and remove this warning by setting:
 
   config.active_record.raise_in_transactional_callbacks = true
 
- (called from <class:Report> at /Users/handongbing/Desktop/newrepo/app/models/report.rb:2)
+ (called from <class:Report> at /Users/handongbing/Desktop/Columbia-Repair-Report-Platform/app/models/report.rb:3)
 DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
 
 You can opt into the new behavior and remove this warning by setting:
 
   config.active_record.raise_in_transactional_callbacks = true
 
- (called from <class:Report> at /Users/handongbing/Desktop/newrepo/app/models/report.rb:2)
+ (called from <class:Report> at /Users/handongbing/Desktop/Columbia-Repair-Report-Platform/app/models/report.rb:3)
 DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
 
 You can opt into the new behavior and remove this warning by setting:
 
   config.active_record.raise_in_transactional_callbacks = true
 
- (called from <class:Report> at /Users/handongbing/Desktop/newrepo/app/models/report.rb:2)
-  [1m[35m (0.1ms)[0m  begin transaction
-  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "reports" ("building", "area", "problemtype", "emergencylevel", "status") VALUES (?, ?, ?, ?, ?)[0m  [["building", "Butler"], ["area", "Restroom 4th FL"], ["problemtype", "Plumbing"], ["emergencylevel", "Urgent"], ["status", "Uncompleted"]]
-  [1m[35m (0.6ms)[0m  commit transaction
+ (called from <class:Report> at /Users/handongbing/Desktop/Columbia-Repair-Report-Platform/app/models/report.rb:3)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reports" ("building", "area", "problemtype", "emergencylevel", "status") VALUES (?, ?, ?, ?, ?)[0m  [["building", "Butler"], ["area", "Restroom 4th FL"], ["problemtype", "Plumbing"], ["emergencylevel", "Urgent"], ["status", "Uncompleted"]]
+  [1m[35m (0.3ms)[0m  commit transaction
   [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
   [1m[35mSQL (0.2ms)[0m  INSERT INTO "reports" ("building", "area", "problemtype", "emergencylevel", "status") VALUES (?, ?, ?, ?, ?)  [["building", "Pupin"], ["area", "Lab1034"], ["problemtype", "Electronic"], ["emergencylevel", "Urgent"], ["status", "Uncompleted"]]
-  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+  [1m[36m (0.3ms)[0m  [1mcommit transaction[0m
   [1m[35m (0.0ms)[0m  begin transaction
-  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reports" ("building", "area", "problemtype", "emergencylevel", "status") VALUES (?, ?, ?, ?, ?)[0m  [["building", "Wien"], ["area", "Room 523"], ["problemtype", "Heat"], ["emergencylevel", "Ordinary"], ["status", "Uncompleted"]]
-  [1m[35m (0.4ms)[0m  commit transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "reports" ("building", "area", "problemtype", "emergencylevel", "status") VALUES (?, ?, ?, ?, ?)[0m  [["building", "Wien"], ["area", "Room 523"], ["problemtype", "Heat"], ["emergencylevel", "Ordinary"], ["status", "Uncompleted"]]
+  [1m[35m (0.2ms)[0m  commit transaction
   [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
-  [1m[35mSQL (0.2ms)[0m  INSERT INTO "reports" ("building", "area", "problemtype", "emergencylevel", "status") VALUES (?, ?, ?, ?, ?)  [["building", "Uris"], ["area", "Class Room 301"], ["problemtype", "CVN"], ["emergencylevel", "Ordinary"], ["status", "Uncompleted"]]
-  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "reports" ("building", "area", "problemtype", "emergencylevel", "status") VALUES (?, ?, ?, ?, ?)  [["building", "Uris"], ["area", "Class Room 301"], ["problemtype", "CVN"], ["emergencylevel", "Ordinary"], ["status", "Uncompleted"]]
+  [1m[36m (0.3ms)[0m  [1mcommit transaction[0m
   [1m[35m (0.0ms)[0m  begin transaction
-  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reports" ("building", "area", "problemtype", "emergencylevel", "status") VALUES (?, ?, ?, ?, ?)[0m  [["building", "Butler"], ["area", "Computer 52"], ["problemtype", "Internet"], ["emergencylevel", "Ordinary"], ["status", "Uncompleted"]]
-  [1m[35m (0.3ms)[0m  commit transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "reports" ("building", "area", "problemtype", "emergencylevel", "status") VALUES (?, ?, ?, ?, ?)[0m  [["building", "Butler"], ["area", "Computer 52"], ["problemtype", "Internet"], ["emergencylevel", "Ordinary"], ["status", "Uncompleted"]]
+  [1m[35m (0.2ms)[0m  commit transaction
 
 
-Started GET "/" for ::1 at 2022-11-12 09:52:20 -0500
+Started GET "/" for ::1 at 2022-11-30 20:07:43 -0500
 Processing by PagesController#home as HTML
   Rendered pages/home.html.erb within layouts/application (1.2ms)
   Rendered layouts/_flash.erb (0.3ms)
-Completed 200 OK in 294ms (Views: 294.1ms | ActiveRecord: 0.0ms)
+Completed 200 OK in 285ms (Views: 284.4ms | ActiveRecord: 0.0ms)
 
 
-Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2022-11-12 09:52:21 -0500
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2022-11-30 20:07:43 -0500
 
 
-Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2022-11-12 09:52:21 -0500
+Started GET "/assets/application.self-24cf4432ee26c3ad31bf1a912cccbf82c886365f922aa61339519563db792d20.css?body=1" for ::1 at 2022-11-30 20:07:44 -0500
 
 
-Started GET "/reports/new" for ::1 at 2022-11-12 09:52:23 -0500
+Started GET "/assets/logo.png" for ::1 at 2022-11-30 20:07:44 -0500
+
+
+Started GET "/reports/new" for ::1 at 2022-11-30 20:07:46 -0500
 Processing by ReportsController#new as HTML
-  Rendered reports/new.html.erb within layouts/application (9.7ms)
-  Rendered layouts/_flash.erb (0.0ms)
-Completed 200 OK in 18ms (Views: 17.6ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Report> at /Users/handongbing/Desktop/Columbia-Repair-Report-Platform/app/models/report.rb:3)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Report> at /Users/handongbing/Desktop/Columbia-Repair-Report-Platform/app/models/report.rb:3)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Report> at /Users/handongbing/Desktop/Columbia-Repair-Report-Platform/app/models/report.rb:3)
+  Rendered reports/new.html.erb within layouts/application (12.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 56ms (Views: 22.1ms | ActiveRecord: 0.0ms)
 
 
-Started POST "/reports" for ::1 at 2022-11-12 09:54:20 -0500
+Started GET "/assets/logo.png" for ::1 at 2022-11-30 20:07:46 -0500
+
+
+Started POST "/reports" for ::1 at 2022-11-30 20:08:02 -0500
 Processing by ReportsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eFW0alMxkTooZ6cDDGeMMDRmRpffAx+mnSRPE1nM9BD39ALA14uEVFVRD3udb0PM7tJG52tx7N+LJM4oO0cOFw==", "report"=>{"building"=>"Furnald Hall", "area"=>"Class Room 79", "uni"=>"dh3071", "description"=>"Air conditioner not function", "file"=>#<ActionDispatch::Http::UploadedFile:0x0000000105032270 @tempfile=#<Tempfile:/var/folders/48/tgc9lpr53sncb4wgtf5239_00000gn/T/RackMultipart20221112-80372-1gn0cue.png>, @original_filename="截屏2022-11-12 上午9.54.02.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"report[file]\"; filename=\"\xE6\x88\xAA\xE5\xB1\x8F2022-11-12 \xE4\xB8\x8A\xE5\x8D\x889.54.02.png\"\r\nContent-Type: image/png\r\n">, "problemtype"=>"Heating/Air Conditioning", "emergencylevel"=>"Ordinary"}, "commit"=>"Publish"}
-DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
-
-You can opt into the new behavior and remove this warning by setting:
-
-  config.active_record.raise_in_transactional_callbacks = true
-
- (called from <class:Report> at /Users/handongbing/Desktop/newrepo/app/models/report.rb:2)
-DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
-
-You can opt into the new behavior and remove this warning by setting:
-
-  config.active_record.raise_in_transactional_callbacks = true
-
- (called from <class:Report> at /Users/handongbing/Desktop/newrepo/app/models/report.rb:2)
-DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
-
-You can opt into the new behavior and remove this warning by setting:
-
-  config.active_record.raise_in_transactional_callbacks = true
-
- (called from <class:Report> at /Users/handongbing/Desktop/newrepo/app/models/report.rb:2)
-  [1m[36mReport Load (0.2ms)[0m  [1mSELECT  "reports".* FROM "reports" WHERE "reports"."building" = ? AND "reports"."area" = ? LIMIT 1[0m  [["building", "Furnald Hall"], ["area", "Class Room 79"]]
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xpbQCKJY0G7xuos0yjHhwVVUlyQTUwvxOUNy+bkeowTfvIexYUK5D4owacACqIe/uViynSAXtDxgqzglLbb2jA==", "report"=>{"building"=>"120w 105th Street", "area"=>"Class Room 908", "uni"=>"dh3071", "description"=>"Try email", "problemtype"=>"Electronic", "emergencylevel"=>"Urgent"}, "commit"=>"Publish"}
+  [1m[36mReport Load (0.2ms)[0m  [1mSELECT  "reports".* FROM "reports" WHERE "reports"."building" = ? AND "reports"."area" = ? LIMIT 1[0m  [["building", "120w 105th Street"], ["area", "Class Room 908"]]
   [1m[35m (0.1ms)[0m  begin transaction
-  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "reports" ("building", "area", "problemtype", "emergencylevel", "description", "file", "status") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["building", "Furnald Hall"], ["area", "Class Room 79"], ["problemtype", "Heating/Air Conditioning"], ["emergencylevel", "Ordinary"], ["description", "Air conditioner not function"], ["file", "截屏2022-11-12_上午9.54.02.png"], ["status", "Uncompleted"]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "reports" ("building", "area", "problemtype", "emergencylevel", "description", "status") VALUES (?, ?, ?, ?, ?, ?)[0m  [["building", "120w 105th Street"], ["area", "Class Room 908"], ["problemtype", "Electronic"], ["emergencylevel", "Urgent"], ["description", "Try email"], ["status", "Uncompleted"]]
   [1m[35m (0.4ms)[0m  commit transaction
-Redirected to http://localhost:3000/reports
-Completed 302 Found in 48ms (ActiveRecord: 2.6ms)
+Redirected to http://localhost:3000/
+Completed 302 Found in 27ms (ActiveRecord: 2.5ms)
 
 
-Started GET "/reports" for ::1 at 2022-11-12 09:54:20 -0500
-Processing by ReportsController#index as HTML
-  [1m[36mReport Load (0.2ms)[0m  [1mSELECT "reports".* FROM "reports" WHERE "reports"."status" = ?[0m  [["status", "Uncompleted"]]
-  Rendered reports/index.html.erb within layouts/application (20.4ms)
-  Rendered layouts/_flash.erb (0.1ms)
-Completed 200 OK in 30ms (Views: 29.3ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/reports/8" for ::1 at 2022-11-12 09:54:24 -0500
-Processing by ReportsController#show as HTML
-  Parameters: {"id"=>"8"}
-  [1m[35mReport Load (0.3ms)[0m  SELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1  [["id", 8]]
-  Rendered reports/show.html.erb within layouts/application (1.3ms)
-  Rendered layouts/_flash.erb (0.1ms)
-Completed 200 OK in 18ms (Views: 10.4ms | ActiveRecord: 0.3ms)
-
-
-Started GET "/reports/8/edit" for ::1 at 2022-11-12 09:54:29 -0500
-Processing by ReportsController#edit as HTML
-  Parameters: {"id"=>"8"}
-  [1m[36mReport Load (0.2ms)[0m  [1mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1[0m  [["id", 8]]
-  Rendered reports/edit.html.erb within layouts/application (8.6ms)
-  Rendered layouts/_flash.erb (0.1ms)
-Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 0.2ms)
-
-
-Started PUT "/reports/8" for ::1 at 2022-11-12 09:54:45 -0500
-Processing by ReportsController#update as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Qarw/ZCw0ZOf5MShHN5llRcliJfhe7ep+EEzgsG2647OC0ZXFArE/eLSbNmN1qppzZGI51UJRNDuQbK5oz0RiQ==", "report"=>{"building"=>"Furnald Hall", "area"=>"Class Room 79", "problemtype"=>"Heating/Air Conditioning", "emergencylevel"=>"Ordinary", "description"=>"Air conditioner not function", "file"=>#<ActionDispatch::Http::UploadedFile:0x00000001050937a0 @tempfile=#<Tempfile:/var/folders/48/tgc9lpr53sncb4wgtf5239_00000gn/T/RackMultipart20221112-80372-tpgndg.png>, @original_filename="截屏2022-11-12 上午9.54.37.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"report[file]\"; filename=\"\xE6\x88\xAA\xE5\xB1\x8F2022-11-12 \xE4\xB8\x8A\xE5\x8D\x889.54.37.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Update Report Info", "id"=>"8"}
-  [1m[35mReport Load (0.3ms)[0m  SELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1  [["id", 8]]
-  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
-  [1m[35mSQL (0.4ms)[0m  UPDATE "reports" SET "file" = ? WHERE "reports"."id" = ?  [["file", "截屏2022-11-12_上午9.54.37.png"], ["id", 8]]
-  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
-Redirected to http://localhost:3000/reports/8
-Completed 302 Found in 15ms (ActiveRecord: 1.4ms)
-
-
-Started GET "/reports/8" for ::1 at 2022-11-12 09:54:45 -0500
-Processing by ReportsController#show as HTML
-  Parameters: {"id"=>"8"}
-  [1m[35mReport Load (0.1ms)[0m  SELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1  [["id", 8]]
-  Rendered reports/show.html.erb within layouts/application (0.7ms)
-  Rendered layouts/_flash.erb (0.0ms)
-Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.1ms)
-
-
-Started GET "/report/8/complete" for ::1 at 2022-11-12 09:54:50 -0500
-Processing by ReportsController#complete as HTML
-  Parameters: {"id"=>"8"}
-  [1m[36mReport Load (0.2ms)[0m  [1mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1[0m  [["id", 8]]
-  [1m[35m (0.1ms)[0m  begin transaction
-  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "reports" SET "status" = ? WHERE "reports"."id" = ?[0m  [["status", "Completed"], ["id", 8]]
-  [1m[35m (1.2ms)[0m  commit transaction
-Redirected to http://localhost:3000/reports/8
-Completed 302 Found in 8ms (ActiveRecord: 2.0ms)
-
-
-Started GET "/reports/8" for ::1 at 2022-11-12 09:54:50 -0500
-Processing by ReportsController#show as HTML
-  Parameters: {"id"=>"8"}
-  [1m[36mReport Load (0.2ms)[0m  [1mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1[0m  [["id", 8]]
-  Rendered reports/show.html.erb within layouts/application (0.5ms)
-  Rendered layouts/_flash.erb (0.1ms)
-Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/reports" for ::1 at 2022-11-12 09:54:52 -0500
-Processing by ReportsController#index as HTML
-  [1m[35mReport Load (0.3ms)[0m  SELECT "reports".* FROM "reports" WHERE "reports"."status" = ?  [["status", "Uncompleted"]]
-  Rendered reports/index.html.erb within layouts/application (5.6ms)
-  Rendered layouts/_flash.erb (0.1ms)
-Completed 200 OK in 22ms (Views: 19.9ms | ActiveRecord: 0.3ms)
-
-
-Started GET "/reports?utf8=%E2%9C%93&show_complete=1&commit=Filter" for ::1 at 2022-11-12 09:54:59 -0500
-Processing by ReportsController#index as HTML
-  Parameters: {"utf8"=>"✓", "show_complete"=>"1", "commit"=>"Filter"}
-  [1m[36mReport Load (0.4ms)[0m  [1mSELECT "reports".* FROM "reports"[0m
-  Rendered reports/index.html.erb within layouts/application (4.1ms)
-  Rendered layouts/_flash.erb (0.0ms)
-Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.4ms)
-
-
-Started GET "/reports/8" for ::1 at 2022-11-12 09:55:01 -0500
-Processing by ReportsController#show as HTML
-  Parameters: {"id"=>"8"}
-  [1m[35mReport Load (0.2ms)[0m  SELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1  [["id", 8]]
-  Rendered reports/show.html.erb within layouts/application (1.9ms)
-  Rendered layouts/_flash.erb (0.1ms)
-Completed 200 OK in 18ms (Views: 17.1ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/reports/8/edit" for ::1 at 2022-11-12 09:55:01 -0500
-Processing by ReportsController#edit as HTML
-  Parameters: {"id"=>"8"}
-  [1m[36mReport Load (0.2ms)[0m  [1mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1[0m  [["id", 8]]
-  Rendered reports/edit.html.erb within layouts/application (6.3ms)
-  Rendered layouts/_flash.erb (0.0ms)
-Completed 200 OK in 19ms (Views: 18.1ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/reports" for ::1 at 2022-11-12 09:55:05 -0500
-Processing by ReportsController#index as HTML
-  [1m[35mReport Load (0.3ms)[0m  SELECT "reports".* FROM "reports" WHERE "reports"."status" = ?  [["status", "Uncompleted"]]
-  Rendered reports/index.html.erb within layouts/application (5.9ms)
-  Rendered layouts/_flash.erb (0.0ms)
-Completed 200 OK in 20ms (Views: 17.6ms | ActiveRecord: 0.3ms)
-
-
-Started GET "/reports?utf8=%E2%9C%93&show_complete=1&commit=Filter" for ::1 at 2022-11-12 09:55:10 -0500
-Processing by ReportsController#index as HTML
-  Parameters: {"utf8"=>"✓", "show_complete"=>"1", "commit"=>"Filter"}
-  [1m[36mReport Load (0.3ms)[0m  [1mSELECT "reports".* FROM "reports"[0m
-  Rendered reports/index.html.erb within layouts/application (4.7ms)
-  Rendered layouts/_flash.erb (0.0ms)
-Completed 200 OK in 15ms (Views: 13.7ms | ActiveRecord: 0.3ms)
-
-
-Started GET "/reports/8" for ::1 at 2022-11-12 09:55:11 -0500
-Processing by ReportsController#show as HTML
-  Parameters: {"id"=>"8"}
-  [1m[35mReport Load (0.3ms)[0m  SELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1  [["id", 8]]
-  Rendered reports/show.html.erb within layouts/application (1.4ms)
-  Rendered layouts/_flash.erb (0.1ms)
-Completed 200 OK in 13ms (Views: 11.8ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/reports/1" for ::1 at 2022-11-12 09:55:17 -0500
-Processing by ReportsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[36mReport Load (0.3ms)[0m  [1mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1[0m  [["id", 1]]
-  Rendered reports/show.html.erb within layouts/application (2.1ms)
-  Rendered layouts/_flash.erb (0.1ms)
-Completed 200 OK in 17ms (Views: 14.9ms | ActiveRecord: 0.3ms)
-
-
-Started GET "/uploads/report/file/1/%E5%B0%8F%E6%B5%A3%E7%86%8A.png" for ::1 at 2022-11-12 09:55:17 -0500
-
-ActionController::RoutingError (No route matches [GET] "/uploads/report/file/1/%E5%B0%8F%E6%B5%A3%E7%86%8A.png"):
-  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
-  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
-  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
-  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
-  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
-  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
-  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
-  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
-  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
-  rack (1.6.10) lib/rack/methodoverride.rb:22:in `call'
-  rack (1.6.10) lib/rack/runtime.rb:18:in `call'
-  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
-  rack (1.6.10) lib/rack/lock.rb:17:in `call'
-  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
-  rack (1.6.10) lib/rack/sendfile.rb:113:in `call'
-  railties (4.2.10) lib/rails/engine.rb:518:in `call'
-  railties (4.2.10) lib/rails/application.rb:165:in `call'
-  rack (1.6.10) lib/rack/lock.rb:17:in `call'
-  rack (1.6.10) lib/rack/content_length.rb:15:in `call'
-  rack (1.6.10) lib/rack/handler/webrick.rb:88:in `service'
-  /Users/handongbing/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
-  /Users/handongbing/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
-  /Users/handongbing/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
-
-
-  Rendered /Users/handongbing/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
-  Rendered /Users/handongbing/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
-  Rendered /Users/handongbing/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.2ms)
-  Rendered /Users/handongbing/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
-  Rendered /Users/handongbing/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (16.9ms)
-
-
-Started GET "/reports/1" for ::1 at 2022-11-12 09:55:24 -0500
-Processing by ReportsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[35mReport Load (0.2ms)[0m  SELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1  [["id", 1]]
-  Rendered reports/show.html.erb within layouts/application (2.6ms)
-  Rendered layouts/_flash.erb (0.1ms)
-Completed 200 OK in 15ms (Views: 13.7ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/uploads/report/file/1/%E5%B0%8F%E6%B5%A3%E7%86%8A.png" for ::1 at 2022-11-12 09:55:24 -0500
-
-ActionController::RoutingError (No route matches [GET] "/uploads/report/file/1/%E5%B0%8F%E6%B5%A3%E7%86%8A.png"):
-  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
-  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
-  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
-  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
-  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
-  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
-  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
-  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
-  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
-  rack (1.6.10) lib/rack/methodoverride.rb:22:in `call'
-  rack (1.6.10) lib/rack/runtime.rb:18:in `call'
-  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
-  rack (1.6.10) lib/rack/lock.rb:17:in `call'
-  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
-  rack (1.6.10) lib/rack/sendfile.rb:113:in `call'
-  railties (4.2.10) lib/rails/engine.rb:518:in `call'
-  railties (4.2.10) lib/rails/application.rb:165:in `call'
-  rack (1.6.10) lib/rack/lock.rb:17:in `call'
-  rack (1.6.10) lib/rack/content_length.rb:15:in `call'
-  rack (1.6.10) lib/rack/handler/webrick.rb:88:in `service'
-  /Users/handongbing/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
-  /Users/handongbing/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
-  /Users/handongbing/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
-
-
-  Rendered /Users/handongbing/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
-  Rendered /Users/handongbing/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.8ms)
-  Rendered /Users/handongbing/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
-  Rendered /Users/handongbing/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
-  Rendered /Users/handongbing/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (11.5ms)
-
-
-Started GET "/reports/1/edit" for ::1 at 2022-11-12 09:55:39 -0500
-Processing by ReportsController#edit as HTML
-  Parameters: {"id"=>"1"}
-  [1m[36mReport Load (0.2ms)[0m  [1mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1[0m  [["id", 1]]
-  Rendered reports/edit.html.erb within layouts/application (4.9ms)
-  Rendered layouts/_flash.erb (0.1ms)
-Completed 200 OK in 18ms (Views: 16.2ms | ActiveRecord: 0.2ms)
-
-
-Started PUT "/reports/1" for ::1 at 2022-11-12 09:56:54 -0500
-Processing by ReportsController#update as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+IdCo758POEt6r6q2lSV49WRt2NFyRED6+TPvRqjFb13JvQJOsYpj1DcFtJLXFofDyW3E/G74nr95E6GeCjvug==", "report"=>{"building"=>"Hartley Hall", "area"=>"First Floor Lounge", "problemtype"=>"Other", "emergencylevel"=>"Emergent", "description"=>"pool table broken", "file"=>#<ActionDispatch::Http::UploadedFile:0x0000000126e8b378 @tempfile=#<Tempfile:/var/folders/48/tgc9lpr53sncb4wgtf5239_00000gn/T/RackMultipart20221112-80372-du3mfi.png>, @original_filename="截屏2022-11-12 上午9.56.48.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"report[file]\"; filename=\"\xE6\x88\xAA\xE5\xB1\x8F2022-11-12 \xE4\xB8\x8A\xE5\x8D\x889.56.48.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Update Report Info", "id"=>"1"}
-  [1m[35mReport Load (0.2ms)[0m  SELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1  [["id", 1]]
-  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
-  [1m[35mSQL (0.3ms)[0m  UPDATE "reports" SET "building" = ?, "area" = ?, "problemtype" = ?, "description" = ?, "file" = ? WHERE "reports"."id" = ?  [["building", "Hartley Hall"], ["area", "First Floor Lounge"], ["problemtype", "Other"], ["description", "pool table broken"], ["file", "截屏2022-11-12_上午9.56.48.png"], ["id", 1]]
-  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
-Redirected to http://localhost:3000/reports/1
-Completed 302 Found in 12ms (ActiveRecord: 1.2ms)
-
-
-Started GET "/reports/1" for ::1 at 2022-11-12 09:56:54 -0500
-Processing by ReportsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[35mReport Load (0.1ms)[0m  SELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1  [["id", 1]]
-  Rendered reports/show.html.erb within layouts/application (0.4ms)
-  Rendered layouts/_flash.erb (0.0ms)
-Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.1ms)
-
-
-Started GET "/reports" for ::1 at 2022-11-12 09:56:56 -0500
-Processing by ReportsController#index as HTML
-  [1m[36mReport Load (0.3ms)[0m  [1mSELECT "reports".* FROM "reports" WHERE "reports"."status" = ?[0m  [["status", "Uncompleted"]]
-  Rendered reports/index.html.erb within layouts/application (6.3ms)
-  Rendered layouts/_flash.erb (0.1ms)
-Completed 200 OK in 17ms (Views: 15.8ms | ActiveRecord: 0.3ms)
-
-
-Started GET "/reports/2" for ::1 at 2022-11-12 09:56:59 -0500
-Processing by ReportsController#show as HTML
-  Parameters: {"id"=>"2"}
-  [1m[35mReport Load (0.3ms)[0m  SELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1  [["id", 2]]
-  Rendered reports/show.html.erb within layouts/application (1.5ms)
-  Rendered layouts/_flash.erb (0.1ms)
-Completed 200 OK in 14ms (Views: 12.6ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/reports/2/edit" for ::1 at 2022-11-12 09:57:06 -0500
-Processing by ReportsController#edit as HTML
-  Parameters: {"id"=>"2"}
-  [1m[36mReport Load (0.2ms)[0m  [1mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1[0m  [["id", 2]]
-  Rendered reports/edit.html.erb within layouts/application (5.4ms)
-  Rendered layouts/_flash.erb (0.1ms)
-Completed 200 OK in 17ms (Views: 16.2ms | ActiveRecord: 0.2ms)
-
-
-Started PUT "/reports/2" for ::1 at 2022-11-12 09:58:07 -0500
-Processing by ReportsController#update as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"U4aZQcGwaPhyFYGV34IaOUUt4bF8jtdF11ANBXa0QlDcJy/rRQp9lg8jKe1OitXFn5nhwcj8JDzBUIw+FD+4Vw==", "report"=>{"building"=>"Early Hall", "area"=>"Restroom first floor", "problemtype"=>"Housekeeping", "emergencylevel"=>"Emergent", "description"=>"So dirty", "file"=>#<ActionDispatch::Http::UploadedFile:0x0000000103326e88 @tempfile=#<Tempfile:/var/folders/48/tgc9lpr53sncb4wgtf5239_00000gn/T/RackMultipart20221112-80372-86gb2u.png>, @original_filename="截屏2022-11-12 上午9.57.58.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"report[file]\"; filename=\"\xE6\x88\xAA\xE5\xB1\x8F2022-11-12 \xE4\xB8\x8A\xE5\x8D\x889.57.58.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Update Report Info", "id"=>"2"}
-  [1m[35mReport Load (0.2ms)[0m  SELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1  [["id", 2]]
-  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
-  [1m[35mSQL (0.3ms)[0m  UPDATE "reports" SET "building" = ?, "area" = ?, "problemtype" = ?, "emergencylevel" = ?, "description" = ?, "file" = ? WHERE "reports"."id" = ?  [["building", "Early Hall"], ["area", "Restroom first floor"], ["problemtype", "Housekeeping"], ["emergencylevel", "Emergent"], ["description", "So dirty"], ["file", "截屏2022-11-12_上午9.57.58.png"], ["id", 2]]
-  [1m[36m (0.3ms)[0m  [1mcommit transaction[0m
-Redirected to http://localhost:3000/reports/2
-Completed 302 Found in 14ms (ActiveRecord: 0.9ms)
-
-
-Started GET "/reports/2" for ::1 at 2022-11-12 09:58:07 -0500
-Processing by ReportsController#show as HTML
-  Parameters: {"id"=>"2"}
-  [1m[35mReport Load (0.1ms)[0m  SELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1  [["id", 2]]
-  Rendered reports/show.html.erb within layouts/application (0.5ms)
-  Rendered layouts/_flash.erb (0.1ms)
-Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 0.1ms)
-
-
-Started GET "/reports/2/edit" for ::1 at 2022-11-12 09:58:16 -0500
-Processing by ReportsController#edit as HTML
-  Parameters: {"id"=>"2"}
-  [1m[36mReport Load (0.2ms)[0m  [1mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1[0m  [["id", 2]]
-  Rendered reports/edit.html.erb within layouts/application (6.0ms)
-  Rendered layouts/_flash.erb (0.1ms)
-Completed 200 OK in 18ms (Views: 16.3ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/" for ::1 at 2022-11-12 09:59:05 -0500
+Started GET "/" for ::1 at 2022-11-30 20:08:02 -0500
 Processing by PagesController#home as HTML
-  Rendered pages/home.html.erb within layouts/application (1.6ms)
-  Rendered layouts/_flash.erb (0.5ms)
-Completed 200 OK in 227ms (Views: 227.0ms | ActiveRecord: 0.0ms)
+  Rendered pages/home.html.erb within layouts/application (0.2ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 7ms (Views: 7.2ms | ActiveRecord: 0.0ms)
 
 
-Started GET "/reports" for ::1 at 2022-11-12 09:59:08 -0500
+Started GET "/assets/logo.png" for ::1 at 2022-11-30 20:08:02 -0500
+
+
+Started GET "/login" for ::1 at 2022-11-30 20:08:03 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 12ms (Views: 11.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/logo.png" for ::1 at 2022-11-30 20:08:03 -0500
+
+
+Started POST "/login" for ::1 at 2022-11-30 20:08:04 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Kxb8Q3EFMG8StJe9mbn6j02vrJ/b9PELKG6tCd6lKdAyPKv6sh9ZDmk+dUlRIJzxoaOJJuiwTsZxhufVSg18WA==", "manager"=>{"email"=>"dh3071@columbia.edu", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mManager Load (0.2ms)[0m  [1mSELECT  "managers".* FROM "managers" WHERE "managers"."email" = ? LIMIT 1[0m  [["email", "dh3071@columbia.edu"]]
+Redirected to http://localhost:3000/login
+Completed 302 Found in 23ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/login" for ::1 at 2022-11-30 20:08:04 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 10ms (Views: 9.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/logo.png" for ::1 at 2022-11-30 20:08:04 -0500
+
+
+Started GET "/managers/new" for ::1 at 2022-11-30 20:08:05 -0500
+Processing by ManagersController#new as HTML
+  Rendered managers/new.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 19ms (Views: 12.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/logo.png" for ::1 at 2022-11-30 20:08:05 -0500
+
+
+Started POST "/managers" for ::1 at 2022-11-30 20:08:09 -0500
+Processing by ManagersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"k+ta24xC5mWRH/MFdEFWEGjflAeXjaHUAxr1/523dxSKwQ1iT1iPBOqVEfG82DBuhNOxvqTJHhla8r8jCR8inA==", "manager"=>{"name"=>"Dongbing Han", "email"=>"dh3071@columbia.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+  [1m[35mManager Load (0.2ms)[0m  SELECT  "managers".* FROM "managers" WHERE "managers"."email" = ? LIMIT 1  [["email", "dh3071@columbia.edu"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "managers" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Dongbing Han"], ["email", "dh3071@columbia.edu"], ["password_digest", "$2a$12$mOliQNPpIbgeo/3DttS56O85AsFskS11w..0M0tVHlGvEQb/rkv8i"], ["created_at", "2022-12-01 01:08:09.928688"], ["updated_at", "2022-12-01 01:08:09.928688"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/reports
+Completed 302 Found in 718ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/reports" for ::1 at 2022-11-30 20:08:09 -0500
 Processing by ReportsController#index as HTML
-DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
-
-You can opt into the new behavior and remove this warning by setting:
-
-  config.active_record.raise_in_transactional_callbacks = true
-
- (called from <class:Report> at /Users/handongbing/Desktop/newrepo/app/models/report.rb:2)
-DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
-
-You can opt into the new behavior and remove this warning by setting:
-
-  config.active_record.raise_in_transactional_callbacks = true
-
- (called from <class:Report> at /Users/handongbing/Desktop/newrepo/app/models/report.rb:2)
-DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
-
-You can opt into the new behavior and remove this warning by setting:
-
-  config.active_record.raise_in_transactional_callbacks = true
-
- (called from <class:Report> at /Users/handongbing/Desktop/newrepo/app/models/report.rb:2)
+  [1m[35mManager Load (0.1ms)[0m  SELECT  "managers".* FROM "managers" WHERE "managers"."id" = ? LIMIT 1  [["id", 1]]
   [1m[36mReport Load (0.1ms)[0m  [1mSELECT "reports".* FROM "reports" WHERE "reports"."status" = ?[0m  [["status", "Uncompleted"]]
-  Rendered reports/index.html.erb within layouts/application (7.0ms)
-  Rendered layouts/_flash.erb (0.1ms)
-Completed 200 OK in 44ms (Views: 14.2ms | ActiveRecord: 1.2ms)
+  Rendered reports/index.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 7.7ms | ActiveRecord: 0.2ms)
 
 
-Started GET "/reports/1" for ::1 at 2022-11-12 09:59:10 -0500
+Started GET "/assets/logo.png" for ::1 at 2022-11-30 20:08:09 -0500
+
+
+Started GET "/reports/6" for ::1 at 2022-11-30 20:08:12 -0500
 Processing by ReportsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[35mReport Load (0.4ms)[0m  SELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1  [["id", 1]]
+  Parameters: {"id"=>"6"}
+  [1m[35mManager Load (0.4ms)[0m  SELECT  "managers".* FROM "managers" WHERE "managers"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mReport Load (0.4ms)[0m  [1mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."report_id" = ?  [["report_id", 6]]
+  Rendered reports/show.html.erb within layouts/application (23.7ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 40ms (Views: 32.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/logo.png" for ::1 at 2022-11-30 20:08:12 -0500
+
+
+Started GET "/report/6/complete" for ::1 at 2022-11-30 20:08:16 -0500
+Processing by ReportsController#complete as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mReport Load (1.3ms)[0m  [1mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mUPDATE "reports" SET "status" = ? WHERE "reports"."id" = ?[0m  [["status", "Completed"], ["id", 6]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/reports/6
+Completed 302 Found in 12ms (ActiveRecord: 3.3ms)
+
+
+Started GET "/reports/6" for ::1 at 2022-11-30 20:08:16 -0500
+Processing by ReportsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mManager Load (0.1ms)[0m  [1mSELECT  "managers".* FROM "managers" WHERE "managers"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mReport Load (0.1ms)[0m  SELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."report_id" = ?[0m  [["report_id", 6]]
   Rendered reports/show.html.erb within layouts/application (1.6ms)
-  Rendered layouts/_flash.erb (0.0ms)
-Completed 200 OK in 40ms (Views: 31.6ms | ActiveRecord: 0.4ms)
-
-
-Started GET "/reports/2" for ::1 at 2022-11-12 09:59:15 -0500
-Processing by ReportsController#show as HTML
-  Parameters: {"id"=>"2"}
-  [1m[36mReport Load (0.3ms)[0m  [1mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1[0m  [["id", 2]]
-  Rendered reports/show.html.erb within layouts/application (2.0ms)
   Rendered layouts/_flash.erb (0.1ms)
-Completed 200 OK in 16ms (Views: 13.7ms | ActiveRecord: 0.3ms)
+Completed 200 OK in 13ms (Views: 11.4ms | ActiveRecord: 0.3ms)
 
 
-Started GET "/reports/6" for ::1 at 2022-11-12 09:59:18 -0500
-Processing by ReportsController#show as HTML
-  Parameters: {"id"=>"6"}
-  [1m[35mReport Load (0.3ms)[0m  SELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1  [["id", 6]]
-  Rendered reports/show.html.erb within layouts/application (1.4ms)
+Started GET "/assets/logo.png" for ::1 at 2022-11-30 20:08:16 -0500
+
+
+Started GET "/" for ::1 at 2022-11-30 20:24:14 -0500
+Processing by PagesController#home as HTML
+  Rendered pages/home.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_flash.erb (0.4ms)
+Completed 200 OK in 229ms (Views: 229.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/logo.png" for ::1 at 2022-11-30 20:24:14 -0500
+
+
+Started GET "/login" for ::1 at 2022-11-30 20:24:16 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (14.6ms)
   Rendered layouts/_flash.erb (0.1ms)
-Completed 200 OK in 16ms (Views: 14.7ms | ActiveRecord: 0.3ms)
+Completed 200 OK in 28ms (Views: 28.2ms | ActiveRecord: 0.0ms)
 
 
-Started GET "/reports/6/edit" for ::1 at 2022-11-12 09:59:20 -0500
-Processing by ReportsController#edit as HTML
-  Parameters: {"id"=>"6"}
-  [1m[36mReport Load (0.2ms)[0m  [1mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1[0m  [["id", 6]]
-  Rendered reports/edit.html.erb within layouts/application (22.6ms)
-  Rendered layouts/_flash.erb (0.0ms)
-Completed 200 OK in 30ms (Views: 28.9ms | ActiveRecord: 0.2ms)
+Started GET "/assets/logo.png" for ::1 at 2022-11-30 20:24:16 -0500
 
 
-Started GET "/reports/5" for ::1 at 2022-11-12 09:59:26 -0500
-Processing by ReportsController#show as HTML
-  Parameters: {"id"=>"5"}
-  [1m[35mReport Load (0.2ms)[0m  SELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1  [["id", 5]]
-  Rendered reports/show.html.erb within layouts/application (1.5ms)
+Started POST "/login" for ::1 at 2022-11-30 20:24:18 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8SsV+7cwK5OpOXg01QVygZXK/kZU2mpSoTFNvilA4wjoAUJCdCpC8tKzmsAdnBT/ecbb/2ee1Z/42Qdivei2gA==", "manager"=>{"email"=>"dh3071@columbia.edu", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mManager Load (0.4ms)[0m  [1mSELECT  "managers".* FROM "managers" WHERE "managers"."email" = ? LIMIT 1[0m  [["email", "dh3071@columbia.edu"]]
+Redirected to http://localhost:3000/reports
+Completed 302 Found in 740ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/reports" for ::1 at 2022-11-30 20:24:18 -0500
+Processing by ReportsController#index as HTML
+  [1m[35mManager Load (0.1ms)[0m  SELECT  "managers".* FROM "managers" WHERE "managers"."id" = ? LIMIT 1  [["id", 1]]
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Report> at /Users/handongbing/Desktop/newrepo/app/models/report.rb:3)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Report> at /Users/handongbing/Desktop/newrepo/app/models/report.rb:3)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Report> at /Users/handongbing/Desktop/newrepo/app/models/report.rb:3)
+  [1m[36mReport Load (0.1ms)[0m  [1mSELECT "reports".* FROM "reports" WHERE "reports"."status" = ?[0m  [["status", "Uncompleted"]]
+  Rendered reports/index.html.erb within layouts/application (7.3ms)
   Rendered layouts/_flash.erb (0.1ms)
-Completed 200 OK in 16ms (Views: 14.6ms | ActiveRecord: 0.2ms)
+Completed 200 OK in 34ms (Views: 29.3ms | ActiveRecord: 0.3ms)
 
 
-Started GET "/reports/4" for ::1 at 2022-11-12 09:59:28 -0500
-Processing by ReportsController#show as HTML
-  Parameters: {"id"=>"4"}
-  [1m[36mReport Load (0.2ms)[0m  [1mSELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1[0m  [["id", 4]]
-  Rendered reports/show.html.erb within layouts/application (1.5ms)
-  Rendered layouts/_flash.erb (0.1ms)
-Completed 200 OK in 17ms (Views: 15.2ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/reports/3" for ::1 at 2022-11-12 09:59:33 -0500
-Processing by ReportsController#show as HTML
-  Parameters: {"id"=>"3"}
-  [1m[35mReport Load (0.2ms)[0m  SELECT  "reports".* FROM "reports" WHERE "reports"."id" = ? LIMIT 1  [["id", 3]]
-  Rendered reports/show.html.erb within layouts/application (1.4ms)
-  Rendered layouts/_flash.erb (0.0ms)
-Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.2ms)
+Started GET "/assets/logo.png" for ::1 at 2022-11-30 20:24:18 -0500

@@ -13,6 +13,21 @@
 
 ActiveRecord::Schema.define(version: 20221124151904) do
 
+  create_table "comments", force: :cascade do |t|
+    t.text    "comment"
+    t.integer "report_id"
+    t.integer "manager_id"
+  end
+
+  create_table "managers", force: :cascade do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "name"
+    t.string   "role"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "reports", force: :cascade do |t|
     t.string "building"
     t.string "area"

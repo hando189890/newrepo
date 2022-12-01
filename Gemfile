@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.6.8'
+ruby '2.6.6'
 gem 'rails', '4.2.10'
 
 # for Heroku deployment
@@ -33,4 +33,5 @@ gem 'jquery-rails'
 
 # custom
 gem 'rqrcode'
+gem 'bcrypt'
 gem 'carrierwave'

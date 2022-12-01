@@ -38,6 +38,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.4.0)
     arel (6.0.4)
+    bcrypt (3.1.18)
     builder (3.2.3)
     byebug (9.0.5)
     capybara (2.4.4)
@@ -198,6 +199,7 @@ PLATFORMS
 
 DEPENDENCIES
   ZenTest (= 4.11.2)
+  bcrypt
   byebug
   capybara (= 2.4.4)
   carrierwave
@@ -217,7 +219,7 @@ DEPENDENCIES
   uglifier (>= 2.7.1)
 
 RUBY VERSION
-   ruby 2.6.8p205
+   ruby 2.6.6p146
 
 BUNDLED WITH
    1.17.3
